@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Speech;
+using Android.Media;
 using System.Collections.Generic;
 
 namespace Aura_android
@@ -17,6 +18,8 @@ namespace Aura_android
         private readonly int VOICE = 10;
         private TextView textBox;
         private Button recButton;
+
+        MediaPlayer _player;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -89,12 +92,24 @@ namespace Aura_android
                     var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
                     if (matches.Count != 0)
                     {
-                        string textInput = textBox.Text + matches[0];
+                        string textInput;
+                        //textInput = textBox.Text + matches[0]; -- this keeps the previous words on the screen
+                        textInput = matches[0];  //matches is the output from the speech to text engine
 
                         // limit the output to 500 characters
                         if (textInput.Length > 500)
-                            textInput = textInput.Substring(0, 500);
+                        {
+                            textInput = textInput.Substring(0, 500).ToLower();
+
+                            //This is a complete sentence including spaces. Parse this and store words. 
+                            //splitwords(textInput);
+                            //textBox.Text = ;  -- keeping here doesn't work!!
+                        }
+
                         textBox.Text = textInput;
+                        splitwords(textInput);
+                        
+
                     }
                     else
                         textBox.Text = "No speech was recognised";
@@ -104,6 +119,35 @@ namespace Aura_android
             }
 
             base.OnActivityResult(requestCode, resultVal, data);
+        }
+
+        /*Add function here*/
+        void splitwords(String sentence)
+        {
+            char[] delimiters = {' '};
+            string[] words = sentence.Split(delimiters); 
+
+            foreach (string s in words)
+            {
+                playsounds(s);
+            }
+        }
+
+        /*Play sounds*/
+        void playsounds(String boldwords)
+        {
+            //textBox.Text = boldwords;
+            if(boldwords == "hello")
+            {
+                _player = MediaPlayer.Create(this, Resource.Raw.bird_cut);
+                _player.Start();
+            }
+            else if(boldwords == "sunshine")
+            {
+                textBox.Text = boldwords;
+                _player = MediaPlayer.Create(this, Resource.Raw.flute_cut);
+                _player.Start();
+            }
         }
     }
 }
