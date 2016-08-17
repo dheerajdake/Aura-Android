@@ -1,0 +1,16 @@
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.dll
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.pdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.Aura_android.apk
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.Aura_android-Signed.apk
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\Aura_android.dll
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\Aura_android.pdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\android\bin\Aura_android.Aura_android.apk
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\layout\main.xml
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\values\strings.xml
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\drawable\icon.png
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\bird_cut.mp3
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\flute_cut.mp3
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\R.cs.flag
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\uploadflags.txt
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\Aura_android.dll.mdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.dll.mdb
