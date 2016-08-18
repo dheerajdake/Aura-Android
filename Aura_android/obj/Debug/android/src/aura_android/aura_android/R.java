@@ -26,7 +26,12 @@ public final class R {
     }
     public static final class raw {
         public static final int bird_cut=0x7f040000;
-        public static final int flute_cut=0x7f040001;
+        public static final int flame_cut=0x7f040001;
+        public static final int flute_cut=0x7f040002;
+        public static final int rain_cut=0x7f040003;
+        public static final int rooster_cut=0x7f040004;
+        public static final int thunder_cut=0x7f040005;
+        public static final int wind_cut=0x7f040006;
     }
     public static final class string {
         public static final int ApplicationName=0x7f050001;

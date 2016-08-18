@@ -55,6 +55,7 @@ namespace Aura_android
                 recButton.Click += delegate
                 {
                     // change the text on the button
+                    Console.WriteLine("Breakpoint ...");
                     recButton.Text = "End Recording";
                     isRecording = !isRecording;
                     if (isRecording)
@@ -67,9 +68,9 @@ namespace Aura_android
                         voiceIntent.PutExtra(RecognizerIntent.ExtraPrompt, Application.Context.GetString(Resource.String.messageSpeakNow));
 
                         // if there is more then 1.5s of silence, consider the speech over
-                        voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputCompleteSilenceLengthMillis, 1500);
-                        voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputPossiblyCompleteSilenceLengthMillis, 1500);
-                        voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputMinimumLengthMillis, 15000);
+                        voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputCompleteSilenceLengthMillis, 10000);
+                        voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputPossiblyCompleteSilenceLengthMillis, 50000);
+                        voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputMinimumLengthMillis, 50000);
                         voiceIntent.PutExtra(RecognizerIntent.ExtraMaxResults, 1);
 
                         // you can specify other languages recognised here, for example
@@ -95,21 +96,18 @@ namespace Aura_android
                         string textInput;
                         //textInput = textBox.Text + matches[0]; -- this keeps the previous words on the screen
                         textInput = matches[0];  //matches is the output from the speech to text engine
+                        Console.WriteLine("Getting data from matches...");
 
                         // limit the output to 500 characters
                         if (textInput.Length > 500)
                         {
                             textInput = textInput.Substring(0, 500).ToLower();
-
-                            //This is a complete sentence including spaces. Parse this and store words. 
-                            //splitwords(textInput);
-                            //textBox.Text = ;  -- keeping here doesn't work!!
-                        }
+                        }//this only executes if the character limit is >500
 
                         textBox.Text = textInput;
-                        splitwords(textInput);
-                        
-
+                        Console.WriteLine("Spoken -- ");
+                        Console.WriteLine(textInput);
+                        splitwords(textInput.ToLower());
                     }
                     else
                         textBox.Text = "No speech was recognised";
@@ -136,16 +134,39 @@ namespace Aura_android
         /*Play sounds*/
         void playsounds(String boldwords)
         {
-            //textBox.Text = boldwords;
-            if(boldwords == "hello")
+            if(boldwords == "bright")
             {
                 _player = MediaPlayer.Create(this, Resource.Raw.bird_cut);
                 _player.Start();
             }
-            else if(boldwords == "sunshine")
+            else if(boldwords == "darkness")
             {
-                textBox.Text = boldwords;
                 _player = MediaPlayer.Create(this, Resource.Raw.flute_cut);
+                _player.Start();
+            }
+            else if(boldwords == "stormy")
+            {
+                _player = MediaPlayer.Create(this, Resource.Raw.thunder_cut);
+                _player.Start();
+            }
+            else if(boldwords == "rain")
+            {
+                _player = MediaPlayer.Create(this, Resource.Raw.rain_cut);
+                _player.Start();
+            }
+            else if(boldwords == "wind")
+            {
+                _player = MediaPlayer.Create(this, Resource.Raw.wind_cut);
+                _player.Start();
+            }
+            else if(boldwords == "flame")
+            {
+                _player = MediaPlayer.Create(this, Resource.Raw.flame_cut);
+                _player.Start();
+            }
+            else if(boldwords == "sun")
+            {
+                _player = MediaPlayer.Create(this, Resource.Raw.rooster_cut);
                 _player.Start();
             }
         }

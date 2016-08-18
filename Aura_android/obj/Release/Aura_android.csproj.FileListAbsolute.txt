@@ -34,5 +34,10 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\android\
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\android\assets\System.Runtime.Serialization.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\android\assets\System.ServiceModel.Internals.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\android\assets\System.Xml.dll.mdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\flame_cut.mp3
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\rain_cut.mp3
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\rooster_cut.mp3
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\thunder_cut.mp3
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\wind_cut.mp3
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\Aura_android.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.dll.mdb
