@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+
 namespace Aura_android
 {
     [Activity(Label = "StoryPickActivity")]
@@ -54,10 +55,14 @@ namespace Aura_android
 
             if(genre[e.Position] == genre[0])
             {
-                Console.WriteLine(genre[0]);
                 var narrate_intent = new Intent(this, typeof(NarrateActivity));
                 StartActivity(narrate_intent);
             }
+            else if(genre[e.Position] == genre[1])
+            {
+                  //Setup REST API test
+            }
         }
+
     }
 }

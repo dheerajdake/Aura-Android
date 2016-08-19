@@ -41,5 +41,6 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\wind_cut.mp3
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\layout\welcome.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\layout\storypick.xml
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\layout\narrate.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\Aura_android.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.dll.mdb

@@ -35,6 +35,9 @@
         android:layout_weight="1">
         <TextView
             android:text="Story"
+            android:textSize="45dp"
+            android:textColor="#FF0032"
+            android:background="#000000"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
@@ -42,8 +45,13 @@
             android:id="@+id/textView1" />
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:id="@+id/textYourText" />
+            android:layout_height="200dp"
+            android:padding="20dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:background="#000000"
+            android:textColor="#FFFFFF"
+            android:id="@+id/story_box" />
     </LinearLayout>
 <!--For speech-->
     <LinearLayout
@@ -56,6 +64,9 @@
         android:layout_weight="1">
         <TextView
             android:text="Speech"
+            android:textSize="40dp"
+            android:textColor="#FF0000"
+            android:background="#000000"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
@@ -63,6 +74,11 @@
             android:id="@+id/textView1" />
         <TextView
             android:layout_width="match_parent"
+            android:background="#000000"
+            android:textSize="10dp"
+            android:padding="5dp"
+            android:gravity="center"
+            android:textColor="#7CFC00"
             android:layout_height="50dp"
             android:id="@+id/speech_box" />
     </LinearLayout>

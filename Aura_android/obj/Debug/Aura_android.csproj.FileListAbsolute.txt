@@ -7,6 +7,7 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_andro
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\bin\Aura_android.Aura_android.apk
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\layout\welcome.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\layout\storypick.xml
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\layout\narrate.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\layout\main.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\values\strings.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\drawable\icon.png
@@ -20,6 +21,7 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\raw\wi
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\R.cs.flag
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\uploadflags.txt
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Aura_android.dll.mdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_android.csprojResolveAssemblyReference.cache
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Java.Interop.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Mono.Android.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\mscorlib.dll.mdb
@@ -43,7 +45,5 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\as
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
-C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_android.csprojResolveAssemblyReference.cache
-C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\layout\narrate.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_android.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Aura_android.dll.mdb

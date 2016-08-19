@@ -20,7 +20,12 @@ namespace Aura_android
         private bool isRecording;
         private readonly int VOICE = 10;
         private TextView SpeechBox;
-        private Button narrateButton;
+        private Button narrateButton, prevButton, nextButton;
+        private TextView storybox;
+        private string[] lines;
+        private int line_count = 0;
+        private int currentLine = 0;
+
         MediaPlayer _player;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -36,6 +41,62 @@ namespace Aura_android
             //get resources from the layout
             narrateButton = FindViewById<Button>(Resource.Id.record_start);
             SpeechBox = FindViewById<TextView>(Resource.Id.speech_box);
+            storybox = FindViewById<TextView>(Resource.Id.story_box);
+            prevButton = FindViewById<Button>(Resource.Id.Narrate_previous);
+            nextButton = FindViewById<Button>(Resource.Id.Narrate_next);
+
+            /*Demo story*/
+            string tellTale = "It was a dark and stormy night. The rain fell in torrents. Except when it was checked by violent gust of wind."
+                             + "And the scanty flame of the lamps, struggled against the darkness. But the next morning the sun came out."
+                             + "The future seemed bright. And everyone lived happily ever after";
+            splitsentences(tellTale);
+
+            /*The page displays the first line*/
+            storybox.Text = lines[0];
+
+            /*Button Clicks*/
+            prevButton.Click += (sender, e) =>
+            {
+                if (currentLine >= 1)
+                {
+                    currentLine--;
+                    storybox.Text = lines[currentLine];
+                }
+                else
+                {
+                    Console.WriteLine("This is the beginning");
+                    /*Alert popup*/
+                    var alertBegin = new AlertDialog.Builder(prevButton.Context);
+                    alertBegin.SetTitle("You reached the beginning");
+                    alertBegin.SetPositiveButton("OK", (sender1, f) =>
+                    {
+                        return;
+                    });
+                    alertBegin.Show();
+                }
+                Console.WriteLine("Previous clicked");
+            };
+
+            nextButton.Click += (sender, e) =>
+            {
+                if (currentLine < line_count - 1)      //linecount is 8, but the array val is till 7
+                {
+                    currentLine++;
+                    storybox.Text = lines[currentLine];
+                }
+                else
+                {
+                    Console.WriteLine("The end");
+                    var alertEnd = new AlertDialog.Builder(nextButton.Context);
+                    alertEnd.SetTitle("You reached the end");
+                    alertEnd.SetPositiveButton("OK", (sender1, f) =>
+                    {
+                        return;
+                    });
+                    alertEnd.Show();
+                }
+                Console.WriteLine("Next clicked");
+            };
 
             // check to see if we can actually record - if we can, assign the event to the button
             string rec = Android.Content.PM.PackageManager.FeatureMicrophone;
@@ -62,6 +123,7 @@ namespace Aura_android
                     isRecording = !isRecording;
                     if (isRecording)
                     {
+
                         // create the intent and start the activity
                         var voiceIntent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
                         voiceIntent.PutExtra(RecognizerIntent.ExtraLanguageModel, RecognizerIntent.LanguageModelFreeForm);
@@ -85,6 +147,12 @@ namespace Aura_android
                     }
                 };
         }
+
+        private void PrevButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
 
         protected override void OnActivityResult(int requestCode, Result resultVal, Intent data)
         {
@@ -133,6 +201,21 @@ namespace Aura_android
             }
         }
 
+        /*Display sentences*/
+        void splitsentences(String story)
+        {
+            char[] delimiters = { '.', '!', ',' };
+            lines = story.Split(delimiters);
+
+            foreach (string s in lines)
+            {
+                Console.WriteLine(lines[line_count]);
+                line_count++;
+            }
+
+            Console.Write("The number of lines are "); Console.WriteLine(line_count);
+        }
+
         /*Play sounds*/
         void playsounds(String boldwords)
         {
@@ -172,5 +255,7 @@ namespace Aura_android
                 _player.Start();
             }
         }
+
+
     }
 }
