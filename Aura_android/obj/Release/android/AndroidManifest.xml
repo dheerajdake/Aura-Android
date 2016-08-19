@@ -3,8 +3,10 @@
   <!--suppress UsesMinSdkAttributes-->
   <uses-sdk android:minSdkVersion="16" />
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
-  <application android:label="Aura_android" android:name="android.app.Application" android:allowBackup="true" android:icon="@drawable/icon">
-    <activity android:icon="@drawable/icon" android:label="Aura_android" android:name="md54f0eb95f1ee306827dcb223ac082a559.MainActivity">
+  <application android:label="Aura_android" android:name="android.app.Application" android:allowBackup="true">
+    <activity android:label="Aura_android" android:name="md54f0eb95f1ee306827dcb223ac082a559.MainActivity" />
+    <activity android:label="StoryPickActivity" android:name="md54f0eb95f1ee306827dcb223ac082a559.StoryPickActivity" />
+    <activity android:icon="@drawable/icon" android:label="WelcomeScreen" android:name="md54f0eb95f1ee306827dcb223ac082a559.WelcomeScreen">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

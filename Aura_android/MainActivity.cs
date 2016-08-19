@@ -11,7 +11,8 @@ using System.Collections.Generic;
 
 namespace Aura_android
 {
-    [Activity(Label = "Aura_android", MainLauncher = true, Icon = "@drawable/icon")]
+    //[Activity(Label = "Aura_android", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Aura_android")]
     public class MainActivity : Activity
     {
         private bool isRecording;
