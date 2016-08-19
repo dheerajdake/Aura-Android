@@ -43,5 +43,7 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\as
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_android.csprojResolveAssemblyReference.cache
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\layout\narrate.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_android.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Aura_android.dll.mdb

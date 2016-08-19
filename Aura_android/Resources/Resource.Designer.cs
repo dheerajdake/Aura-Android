@@ -60,6 +60,12 @@ namespace Aura_android
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f060007
+			public const int Narrate_next = 2131099655;
+			
+			// aapt resource value: 0x7f060006
+			public const int Narrate_previous = 2131099654;
+			
 			// aapt resource value: 0x7f060001
 			public const int btnRecord = 2131099649;
 			
@@ -72,8 +78,14 @@ namespace Aura_android
 			// aapt resource value: 0x7f060005
 			public const int linearLayout3 = 2131099653;
 			
-			// aapt resource value: 0x7f060007
-			public const int listview_stories = 2131099655;
+			// aapt resource value: 0x7f06000b
+			public const int listview_stories = 2131099659;
+			
+			// aapt resource value: 0x7f060009
+			public const int record_start = 2131099657;
+			
+			// aapt resource value: 0x7f060008
+			public const int speech_box = 2131099656;
 			
 			// aapt resource value: 0x7f060003
 			public const int textView1 = 2131099651;
@@ -81,11 +93,11 @@ namespace Aura_android
 			// aapt resource value: 0x7f060004
 			public const int textYourText = 2131099652;
 			
-			// aapt resource value: 0x7f060006
-			public const int welcome_content = 2131099654;
+			// aapt resource value: 0x7f06000a
+			public const int welcome_content = 2131099658;
 			
-			// aapt resource value: 0x7f060008
-			public const int welcome_next = 2131099656;
+			// aapt resource value: 0x7f06000c
+			public const int welcome_next = 2131099660;
 			
 			static Id()
 			{
@@ -104,10 +116,13 @@ namespace Aura_android
 			public const int Main = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int StoryPick = 2130903041;
+			public const int Narrate = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Welcome = 2130903042;
+			public const int StoryPick = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Welcome = 2130903043;
 			
 			static Layout()
 			{

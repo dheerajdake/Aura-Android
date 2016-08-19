@@ -55,8 +55,8 @@ namespace Aura_android
             if(genre[e.Position] == genre[0])
             {
                 Console.WriteLine(genre[0]);
-                var Main_intent = new Intent(this, typeof(MainActivity));
-                StartActivity(Main_intent);
+                var narrate_intent = new Intent(this, typeof(NarrateActivity));
+                StartActivity(narrate_intent);
             }
         }
     }
