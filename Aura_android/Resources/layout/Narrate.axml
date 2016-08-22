@@ -1,100 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:weightSum="3">
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/linearLayout1">
+    <TextView
+        p1:text="Tell the story!"
+        p1:textAppearance="?android:attr/textAppearanceLarge"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/textView4"
+        p1:gravity="center"
+        p1:paddingBottom="0dp"
+        p1:paddingTop="10dp" />
+    <TextView
+        p1:text="You said:"
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/textView1"
+        p1:paddingTop="10dp"
+        p1:paddingLeft="20dp"
+        p1:paddingBottom="10dp" />
     <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1"
-        android:layout_weight="1"
-        android:layout_marginBottom="0.0dp">
-        <Button
-            android:text="Previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Narrate_previous" />
-        <Button
-            android:text="Next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Narrate_next" />
+        p1:orientation="horizontal"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/linearLayout2"
+        p1:minWidth="25px"
+        p1:minHeight="25px">
+        <TextView
+            p1:text="*speech*"
+            p1:layout_width="match_parent"
+            p1:layout_height="100dp"
+            p1:id="@+id/speech_box"
+            p1:layout_gravity="center"
+            p1:gravity="center"
+            p1:textColor="#ff000000"
+            p1:background="#e1ffffff"
+            p1:layout_marginLeft="20dp"
+            p1:layout_marginRight="20dp" />
     </LinearLayout>
-<!--Buttons end-->
-<!--For story-->
+    <TextView
+        p1:text="Read:"
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/textView3"
+        p1:layout_gravity="center"
+        p1:paddingTop="20dp"
+        p1:paddingBottom="10dp"
+        p1:paddingLeft="20dp" />
     <LinearLayout
-        android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:layout_weight="1">
+        p1:orientation="horizontal"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/linearLayout3">
         <TextView
-            android:text="Story"
-            android:textSize="45dp"
-            android:textColor="#FF0032"
-            android:background="#000000"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView1" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:padding="20dp"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:background="#000000"
-            android:textColor="#FFFFFF"
-            android:id="@+id/story_box" />
+            p1:text="*story*"
+            p1:layout_width="match_parent"
+            p1:layout_height="150dp"
+            p1:id="@+id/story_box"
+            p1:layout_gravity="center"
+            p1:gravity="center"
+            p1:textColor="#ff000000"
+            p1:background="#e1ffffff"
+            p1:layout_marginLeft="20dp"
+            p1:layout_marginRight="20dp" />
     </LinearLayout>
-<!--For speech-->
     <LinearLayout
-        android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:layout_weight="1">
-        <TextView
-            android:text="Speech"
-            android:textSize="40dp"
-            android:textColor="#FF0000"
-            android:background="#000000"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView1" />
-        <TextView
-            android:layout_width="match_parent"
-            android:background="#000000"
-            android:textSize="10dp"
-            android:padding="5dp"
-            android:gravity="center"
-            android:textColor="#7CFC00"
-            android:layout_height="50dp"
-            android:id="@+id/speech_box" />
-    </LinearLayout>
-<!--For narration-->
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1"
-        android:layout_weight="1"
-        android:layout_marginBottom="0.0dp">
+        p1:orientation="horizontal"
+        p1:layout_width="match_parent"
+        p1:layout_height="match_parent"
+        p1:id="@+id/linearLayout4">
         <Button
-            android:text="Narrate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/record_start" />
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            p1:id="@+id/Narrate_previous"
+            p1:foreground="@android:drawable/ic_media_previous"
+            p1:padding="30dp"
+            p1:layout_marginLeft="30dp"
+            p1:layout_marginTop="30dp"
+            p1:layout_margin="30dp" />
+        <Button
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            p1:id="@+id/record_start"
+            p1:background="#ff2196f3"
+            p1:foreground="@android:drawable/ic_btn_speak_now"
+            p1:padding="30dp"
+            p1:layout_gravity="center_vertical"
+            p1:foregroundTint="#ffffffff"
+            p1:clickable="true"
+            p1:layout_marginTop="30dp"
+            p1:layout_marginBottom="30dp" />
+        <Button
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            p1:id="@+id/Narrate_next"
+            p1:foreground="@android:drawable/ic_media_next"
+            p1:padding="30dp"
+            p1:layout_marginRight="30dp"
+            p1:layout_marginTop="30dp"
+            p1:layout_margin="30dp" />
     </LinearLayout>
 </LinearLayout>
