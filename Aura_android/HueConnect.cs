@@ -56,17 +56,19 @@ namespace Aura_android
             RunOnUiThread(() =>
             {
                 string json = Encoding.UTF8.GetString(e.Result);
-                hueItems = JsonConvert.DeserializeObject<List<Hue_Id>>(json);
+                //hueItems = JsonConvert.DeserializeObject<List<Hue_Id>>(json);
                 //Extracting fields  //[{"id":"001788fffe1a68f4","internalipaddress":"10.0.0.15"}]
 
-                Console.Write("The count is ");
-                Console.WriteLine(hueItems);
+                Console.Write("The Json payload is "); Console.WriteLine(json);
+
+                //Console.Write("The count is ");
+                //Console.WriteLine(hueItems);
 
                 mAdapter = new HueAdapter(this, Resource.Layout.HueConnect, hueItems);
 
                 //HueAdapter adapter = new HueAdapter(this, hueItems);
                 //ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, hueItems);
-                hueListView.Adapter = mAdapter;
+                //hueListView.Adapter = mAdapter;
             });
         }
     }
