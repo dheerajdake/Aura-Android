@@ -60,47 +60,56 @@ namespace Aura_android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060007
-			public const int Narrate_next = 2131099655;
-			
-			// aapt resource value: 0x7f060006
-			public const int Narrate_previous = 2131099654;
-			
-			// aapt resource value: 0x7f060001
-			public const int btnRecord = 2131099649;
-			
-			// aapt resource value: 0x7f060000
-			public const int linearLayout1 = 2131099648;
-			
-			// aapt resource value: 0x7f060002
-			public const int linearLayout2 = 2131099650;
-			
-			// aapt resource value: 0x7f060005
-			public const int linearLayout3 = 2131099653;
-			
-			// aapt resource value: 0x7f06000c
-			public const int listview_stories = 2131099660;
-			
 			// aapt resource value: 0x7f06000a
-			public const int record_start = 2131099658;
+			public const int Narrate_next = 2131099658;
 			
 			// aapt resource value: 0x7f060009
-			public const int speech_box = 2131099657;
-			
-			// aapt resource value: 0x7f060008
-			public const int story_box = 2131099656;
-			
-			// aapt resource value: 0x7f060003
-			public const int textView1 = 2131099651;
+			public const int Narrate_previous = 2131099657;
 			
 			// aapt resource value: 0x7f060004
-			public const int textYourText = 2131099652;
+			public const int btnRecord = 2131099652;
 			
-			// aapt resource value: 0x7f06000b
-			public const int welcome_content = 2131099659;
+			// aapt resource value: 0x7f060002
+			public const int conn_hue = 2131099650;
+			
+			// aapt resource value: 0x7f060001
+			public const int displayHue = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int instructions = 2131099648;
+			
+			// aapt resource value: 0x7f060003
+			public const int linearLayout1 = 2131099651;
+			
+			// aapt resource value: 0x7f060005
+			public const int linearLayout2 = 2131099653;
+			
+			// aapt resource value: 0x7f060008
+			public const int linearLayout3 = 2131099656;
+			
+			// aapt resource value: 0x7f06000f
+			public const int listview_stories = 2131099663;
 			
 			// aapt resource value: 0x7f06000d
-			public const int welcome_next = 2131099661;
+			public const int record_start = 2131099661;
+			
+			// aapt resource value: 0x7f06000c
+			public const int speech_box = 2131099660;
+			
+			// aapt resource value: 0x7f06000b
+			public const int story_box = 2131099659;
+			
+			// aapt resource value: 0x7f060006
+			public const int textView1 = 2131099654;
+			
+			// aapt resource value: 0x7f060007
+			public const int textYourText = 2131099655;
+			
+			// aapt resource value: 0x7f06000e
+			public const int welcome_content = 2131099662;
+			
+			// aapt resource value: 0x7f060010
+			public const int welcome_next = 2131099664;
 			
 			static Id()
 			{
@@ -116,16 +125,19 @@ namespace Aura_android
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int HueConnect = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Narrate = 2130903041;
+			public const int Main = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int StoryPick = 2130903042;
+			public const int Narrate = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Welcome = 2130903043;
+			public const int StoryPick = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int Welcome = 2130903044;
 			
 			static Layout()
 			{

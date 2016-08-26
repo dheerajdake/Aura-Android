@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="Select your hue"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="30dp"
+        android:id="@+id/instructions"
+        android:layout_marginTop="0.0dp"
+        android:layout_marginBottom="0.0dp"
+        android:layout_marginLeft="0.0dp" />
+    <ListView
+        android:paddingTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:id="@+id/displayHue"
+        android:layout_marginBottom="0.0dp" />
+    <Button
+        android:text="Scan hue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/conn_hue" />
+</LinearLayout>

@@ -9,7 +9,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Mail;
+using System.IO;
 
 namespace Aura_android
 {
@@ -60,9 +63,27 @@ namespace Aura_android
             }
             else if(genre[e.Position] == genre[1])
             {
-                  //Setup REST API test
+                //Setup REST API test
+                //calling the broker service for hue discovery
+                //this works but its too much work on the same thread. The UI becomes unresponsive if it takes time. 
+                
+                string url = "https://www.meethue.com/api/nupnp";
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
+                request.ContentType = "application/json";
+                request.Method = "GET";
+                HttpWebResponse resp = (HttpWebResponse)request.GetResponse();
+                string responseText;
+
+                using (var response = request.GetResponse())
+                {
+                    using (var reader = new StreamReader(response.GetResponseStream()))
+                    {
+                        responseText = reader.ReadToEnd();
+                        Console.Write("Data is ");
+                        Console.WriteLine(responseText);
+                    }
+                }
             }
         }
-
     }
 }
