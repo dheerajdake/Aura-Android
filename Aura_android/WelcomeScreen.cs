@@ -34,7 +34,7 @@ namespace Aura_android
             //Code for button click
             welcome_next.Click += (sender, e) =>
             {
-                var intent = new Intent(this, typeof(StoryPickActivity));
+                var intent = new Intent(this, typeof(HueConnect));
                 StartActivity(intent);
             };
 
