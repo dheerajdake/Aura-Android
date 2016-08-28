@@ -14,7 +14,7 @@ namespace Aura_android
 {
    class Hue_Id
     {
-        public string id { get; set; }
-        public string internalipaddress { get; set; }
+        public string id;// { get; set; }
+        public string internalipaddress;// { get; set; }
     }
 }
