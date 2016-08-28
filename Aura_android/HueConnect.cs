@@ -21,7 +21,7 @@ namespace Aura_android
     {
         private ListView hueListView;
         private TextView instext;
-        private List<Hue_Id> hueItems;
+        private <Hue_Id> hueItems;
         private BaseAdapter<Hue_Id> mAdapter;
         private Button scan_hue;  //search hue button
                
@@ -37,7 +37,7 @@ namespace Aura_android
             hueListView = FindViewById<ListView>(Resource.Id.displayHue);
             instext = FindViewById<TextView>(Resource.Id.instructions);
 
-            //hueItems = new List<Hue_Id>();
+            hueItems = new Hue_Id();
 
             //Add code for button click -- Make a REST API call. This should be an async task
             scan_hue.Click += (sender, e) =>
