@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="HueAdapter.cs" />
     <Compile Include="HueConnect.cs" />
+    <Compile Include="HueCreateUser.cs" />
     <Compile Include="Hue_Id.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NarrateActivity.cs" />
@@ -81,6 +82,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\SignIn.axml" />
+    <AndroidResource Include="Resources\layout\HueCreateUser.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

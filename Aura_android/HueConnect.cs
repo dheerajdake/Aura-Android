@@ -14,6 +14,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+
 namespace Aura_android
 {
     [Activity(Label = "HueConnect")]
@@ -21,9 +22,8 @@ namespace Aura_android
     {
         private ListView hueListView;
         private TextView instext;
-        private <Hue_Id> hueItems;
-        private BaseAdapter<Hue_Id> mAdapter;
         private Button scan_hue;  //search hue button
+        private List<string> hueItems;
                
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,7 +37,6 @@ namespace Aura_android
             hueListView = FindViewById<ListView>(Resource.Id.displayHue);
             instext = FindViewById<TextView>(Resource.Id.instructions);
 
-            hueItems = new Hue_Id();
 
             //Add code for button click -- Make a REST API call. This should be an async task
             scan_hue.Click += (sender, e) =>
@@ -55,102 +54,104 @@ namespace Aura_android
         {
             RunOnUiThread(() =>
             {
-                string json = Encoding.UTF8.GetString(e.Result);
-                //hueItems = JsonConvert.DeserializeObject<List<Hue_Id>>(json);
-                //Extracting fields  //[{"id":"001788fffe1a68f4","internalipaddress":"10.0.0.15"}]
-
-//hueItems = JsonConvert.DeserializeObject<List<Hue_Id>>(json);
-//Extracting fields  //[{"id":"001788fffe1a68f4","internalipaddress":"10.0.0.15"}]
-//XW's Extracting fields is [{"id":"001788fffe27e619","internalipaddress":"192.168.1.232"},{"id":"001788fffe1a58eb","internalipaddress":"192.168.1.29"}]
-
+                string json = Encoding.UTF8.GetString(e.Result);          
                 Console.Write("The Json payload is "); Console.WriteLine(json);
-// see how many hubs are there.
-// for XW there are two, for the hackathon there were 6.
+                //[{ "id":"001788fffe27e619","internalipaddress":"192.168.1.232"},{ "id":"001788fffe1a58eb","internalipaddress":"192.168.1.29"}]
+                //string TEST_JSON = "[{ "id":"001788fffe27e619","internalipaddress":"192.168.1.232"},{ "id":"001788fffe1a58eb","internalipaddress":"192.168.1.29"}]";
+                /*Using substring approach for extracting Id's and IP addresses*/
                 int countHueHub = 0;
                 for (int i = 0; i < json.Length; i++)
                 {
                     if (json[i] == '}')
-                    countHueHub++;
+                        countHueHub++;
                 }
-// the hub count is 2 in XW's home
                 Console.Write("The hub count is "); Console.WriteLine(countHueHub);
 
-
-//print out all hue hubs one by one.
-                string[] hueHubs = new string[countHueHub];
-                int[] start_hue = new int[countHueHub];
-                int[] len_hue = new int[countHueHub];
-                int whichHueHub = 0;
-                for (int i = 0; i < json.Length; i++)
+                /*Take an int array to store the indices of { and }*/
+                int []JSON_storeIndices = new int[countHueHub*2];
+                int index = 0;
+                for(int a=0; a<json.Length; a++)
                 {
-                    if (json[i] == '{')
+                    if((json[a] == '{') || (json[a] == '}'))
                     {
-                        start_hue[whichHueHub] = i;
-                        Console.Write("start place "); Console.WriteLine(i);
-                    }
-                    if (json[i] == '}')
-                    {
-                        len_hue[whichHueHub] = i - start_hue[whichHueHub] + 1;
-                        //Console.Write("len "); Console.WriteLine(i);
-                        whichHueHub++;
+                        JSON_storeIndices[index] = a;
+                        Console.Write(" Hit "); Console.WriteLine(JSON_storeIndices[index]);
+                        index++;
                     }
                 }
-                for (int i = 0; i < countHueHub; i++)
+                
+
+                /*Store strings*/
+                string[] JSON_HueData = new string[countHueHub];
+                int Hue_index = 0;
+                for(int a=0; a<countHueHub; a++)
                 {
-                    hueHubs[i] = json.Substring(start_hue[i], len_hue[i]);
-                    Console.Write("hub is  "); Console.WriteLine(json.Substring(start_hue[i], len_hue[i]));
+                    JSON_HueData[a] = json.Substring(JSON_storeIndices[a+Hue_index], JSON_storeIndices[a+ Hue_index +1]);  //0 1 -- 1 2
+                    Hue_index++;                                            //
                 }
-//end of print all Hue hubs.
-
-// HERE YOU NEED TO CHOOSE WHICH HUB YOU WANT TO USE
-// FOR EXAMPLE YOU WANT TO USE THE FIRST HUB
-                string hub = hueHubs[0];
-
-                Console.Write("hub is  ");Console.WriteLine(hub);
-//for example I use the first hue hub
-
-//	var newhue = new Hue_Id { id = "001788fffe27e619", internalipaddress = "192.168.1.232" };
-//	var newjson = JsonConvert.SerializeObject(newhue);
-
-//    hueItems = JsonConvert.DeserializeObject< Hue_Id >(newjson);
-//	Console.WriteLine("hueItems",newhue.id);
-// using substring get id and ip
-                int[] start_id_ip= new int[2];
-                int[] len_id_ip = new int[2];
-
-                int position = 0;
-
-                for (int i = 0; i <hub.Length ; i++)
+                
+                /*Extract the fields from each JSONHueData*/
+                string[] JSON_HUE_ID = new string[countHueHub];
+                string[] JSON_HUE_IP = new string[countHueHub];
+                int Hue_id_index, Hue_ip_index;
+                
+                for (int a=0; a<countHueHub; a++)
                 {
-                    if (hub[i] == '"')
+                    Console.Write("Extracted payload is "); Console.WriteLine(JSON_HueData[a]);
+                    Hue_id_index = JSON_HueData[a].IndexOf("id");  //this is not working??
+                    Hue_ip_index = JSON_HueData[a].IndexOf("internalipaddress", 0);
+                    //Console.WriteLine("Indices are: ");
+                    Console.Write(Hue_id_index); Console.Write(Hue_ip_index);
+                    Console.WriteLine("............................................................");
+                    const int ID_chars = 5;
+                    const int IP_chars = 20;
+                    int b = Hue_id_index+ID_chars;
+                    int c = Hue_ip_index + IP_chars;
+                
+                    //Extract ID
+                    while(JSON_HueData[a][b] != '\"')
                     {
-                        position++;
-        //start_hue[whichHueHub] = i;
-        //Console.Write("start place "); Console.WriteLine(i);
+                        JSON_HUE_ID[a] += JSON_HueData[a][b];
+                        b++;
                     }
-                    if (position == 3)
-                    start_id_ip[0] = i + 1;
-                    else if (position == 4)
-                    len_id_ip[0] = i - start_id_ip[0];
-                    else if (position == 7)
-                    start_id_ip[1] = i + 1;
-                    else if (position == 8)
-                    len_id_ip[1] = i - start_id_ip[1];
-    
+
+                    //Extract IP
+                    while(JSON_HueData[a][c] != '\"')
+                    {
+                        JSON_HUE_IP[a] += JSON_HueData[a][c];
+                        c++;
+                    }
+                    
+                    Console.WriteLine(JSON_HUE_IP[a]); Console.WriteLine(JSON_HUE_ID[a]);
+                    Console.WriteLine("..................................END..........................");
+                
                 }
 
-                hueItems.id = hub.Substring(start_id_ip[0], len_id_ip[0]);
-                hueItems.internalipaddress = hub.Substring(start_id_ip[1], len_id_ip[1]);
-                Console.WriteLine(len_id_ip[0]);
-                Console.WriteLine(len_id_ip[1]);
+                //Make a list to store the IP's
+                hueItems = new List<string>();
+                for(int a=0; a<countHueHub; a++)
+                {
+                    hueItems.Add(JSON_HUE_IP[a]);
+                }
 
+                //Pass this list to the list adapter 
+                ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, hueItems); //add the list to the adapter for display!!
+                hueListView.Adapter = adapter;
 
-                mAdapter = new HueAdapter(this, Resource.Layout.HueConnect, hueItems);
+                //Action on listview click
+                hueListView.ItemClick += hueListView_ItemClick;
 
-                //HueAdapter adapter = new HueAdapter(this, hueItems);
-                //ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, hueItems);
-                //hueListView.Adapter = mAdapter;
             });
+        }
+
+        //Listview click function
+        private void hueListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            Console.WriteLine(hueItems[e.Position]);  //this is the selected ip address
+                                                      //pass this to the next activity -- tell user to press the button, creates user
+            var intent = new Intent(this, typeof(HueCreateUser));
+            intent.PutExtra("IP address", hueItems[e.Position]);
+            StartActivity(intent);
         }
     }
 }

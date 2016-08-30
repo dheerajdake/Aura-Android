@@ -7,6 +7,7 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <application android:label="Aura_android" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
     <activity android:label="HueConnect" android:name="md54f0eb95f1ee306827dcb223ac082a559.HueConnect" />
+    <activity android:label="HueCreateUser" android:name="md54f0eb95f1ee306827dcb223ac082a559.HueCreateUser" />
     <activity android:label="Aura_android" android:name="md54f0eb95f1ee306827dcb223ac082a559.MainActivity" />
     <activity android:label="NarrateActivity" android:name="md54f0eb95f1ee306827dcb223ac082a559.NarrateActivity" />
     <activity android:label="StoryPickActivity" android:name="md54f0eb95f1ee306827dcb223ac082a559.StoryPickActivity" />

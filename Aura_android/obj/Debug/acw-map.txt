@@ -6,6 +6,10 @@ Aura_android.HueConnect, Aura_android;md54f0eb95f1ee306827dcb223ac082a559.HueCon
 Aura_android.HueConnect, Aura_android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md54f0eb95f1ee306827dcb223ac082a559.HueConnect
 Aura_android.HueConnect;md54f0eb95f1ee306827dcb223ac082a559.HueConnect
 aura_android.HueConnect;md54f0eb95f1ee306827dcb223ac082a559.HueConnect
+Aura_android.HueCreateUser, Aura_android;md54f0eb95f1ee306827dcb223ac082a559.HueCreateUser
+Aura_android.HueCreateUser, Aura_android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md54f0eb95f1ee306827dcb223ac082a559.HueCreateUser
+Aura_android.HueCreateUser;md54f0eb95f1ee306827dcb223ac082a559.HueCreateUser
+aura_android.HueCreateUser;md54f0eb95f1ee306827dcb223ac082a559.HueCreateUser
 Aura_android.MainActivity, Aura_android;md54f0eb95f1ee306827dcb223ac082a559.MainActivity
 Aura_android.MainActivity, Aura_android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md54f0eb95f1ee306827dcb223ac082a559.MainActivity
 Aura_android.MainActivity;md54f0eb95f1ee306827dcb223ac082a559.MainActivity
