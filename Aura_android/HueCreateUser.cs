@@ -19,10 +19,12 @@ namespace Aura_android
     public class HueCreateUser : Activity
     {
         private TextView disp_createUser;
-        private Button btn_createUser, btn_testUser, btn_next;
+        private Button btn_createUser, btn_next;
         
         //strings
         public string Hue_User = null;   //initialization is important, else compiler error
+        public string lights_JSON = null;
+        
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,7 +37,6 @@ namespace Aura_android
             //map resources
             disp_createUser = FindViewById<TextView>(Resource.Id.text_pressBtn);
             btn_createUser = FindViewById<Button>(Resource.Id.btn_createuser);
-            btn_testUser = FindViewById<Button>(Resource.Id.btn_testLights);
             btn_next = FindViewById<Button>(Resource.Id.btn_next);
 
             //extract the IP address from the previous activity
@@ -68,11 +69,10 @@ namespace Aura_android
             };
 
             //Button 2
-            //Test lights
-            btn_testUser.Click += (sender, e) =>
+            //next button
+            btn_next.Click += (sender, e) =>
             {
-                //This should say press connect first, if that step is not performed
-                if(Hue_User == null)
+                if (Hue_User == null)
                 {
                     var alertBegin = new AlertDialog.Builder(btn_createUser.Context);
                     alertBegin.SetTitle("Please press the connect and try again");
@@ -84,29 +84,11 @@ namespace Aura_android
                 }
                 else
                 {
-                    Console.WriteLine("TODO");
-
-                    //create url with the hue user
-                    string LIGHTS_URL = "http://" + IP_ADDR + "/api/" + Hue_User + "/lights";
-                    WebClient client = new WebClient();
-                    Uri uri = new Uri(LIGHTS_URL);
-
-                    //GET request
-                    client.DownloadDataAsync(uri);                         //handle REST services on a seperate thread
-                    client.DownloadDataCompleted += getLightStates;
-
-
-                    //scan the lights, see their on states on then sends urls to lights with ON state
-                    //next will take you to the next activity
+                    var intent = new Intent(this, typeof(HueLamps));
+                    intent.PutExtra("HUE username", Hue_User);  //passing the lights JSON string to the next activity
+                    intent.PutExtra("IP address", IP_ADDR);
+                    StartActivity(intent);
                 }
-            };
-
-            //Button 3
-            //next button
-            btn_next.Click += (sender, e) =>
-            {
-                var intent = new Intent(this, typeof(StoryPickActivity));
-                StartActivity(intent);
             };
         }
 
@@ -151,16 +133,6 @@ namespace Aura_android
                     alertBegin.Show();
                 }
             });
-        }//end button download event
-
-        //Test button event
-        void getLightStates(object sender, DownloadDataCompletedEventArgs e)
-        {
-            RunOnUiThread(() =>
-            {
-                string json = Encoding.UTF8.GetString(e.Result);
-                Console.Write("The lights are "); Console.WriteLine(json);
-            });
-        }
+        }//end button download event   
     }
 }
