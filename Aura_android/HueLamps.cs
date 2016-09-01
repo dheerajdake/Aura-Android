@@ -1,17 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
-using Multiselect;
-using Android.Content.Res;
 using System.Net;
+//using Xamarin.Forms;
 
 namespace Aura_android
 {
@@ -20,7 +16,11 @@ namespace Aura_android
     {
         private Button btn_HueLamps;
         private ListView disp_Hues;
-        string Hue_User, IP_ADDR;
+        private List<string> HueLightsDisp;
+        public string []HueToggleLights;    //size is equal to huelightcount
+        private int hueLightCount = 0;
+        string Hue_User, IP_ADDR, GET_LIGHTS;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -37,20 +37,33 @@ namespace Aura_android
 
             //Make the GET call
             //http://<bridge ip address>/api/1028d66426293e821ecfd9ef1a0731df/lights
-            string GET_lights = "http://" + IP_ADDR + "/api/" + Hue_User + "/lights";
-            Console.WriteLine(GET_lights);
+            GET_LIGHTS = "http://" + IP_ADDR + "/api/" + Hue_User + "/lights";
+            
+            Console.WriteLine(GET_LIGHTS);
 
             WebClient client = new WebClient();
-            Uri uri = new Uri(GET_lights);
+            Uri uri = new Uri(GET_LIGHTS);
 
             string response = client.DownloadString(uri);
             Console.WriteLine(response);
-            findLights(response);
-            displayLightsOnUI();
+            HueToggleLights = new string[findLights(response)];      //finds the lights
+            displayLightsOnUI();   //displays them as a list on the UI
+            selectAllLightsON();   //sets the state of lights to ON
+
+            //button click
+            btn_HueLamps.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(StoryPickActivity));
+                intent.PutStringArrayListExtra("Selected lamps", HueToggleLights);
+                intent.PutExtra("HueLightCount", hueLightCount);
+                intent.PutExtra("IP_ADDR", IP_ADDR);
+                intent.PutExtra("HUE_USER", Hue_User);
+                StartActivity(intent);
+            };
         }
 
-        int hueLightCount = 0;
-        void findLights(string light_string)
+      
+        int findLights(string light_string)
         {
             //int stateIndex = light_string.IndexOf("state");
             //Console.WriteLine("State index is "); Console.WriteLine(stateIndex);
@@ -63,14 +76,14 @@ namespace Aura_android
                     Console.Write("The light count is "); Console.WriteLine(hueLightCount);
                 }
             }
-
             Console.Write("Total lights detected = "); Console.WriteLine(hueLightCount);
+            return hueLightCount;
         }
 
+        
         void displayLightsOnUI()
         {
-            List<string> HueLightsDisp = new List<string>();
-
+            HueLightsDisp = new List<string>();
             //add the lights to this list
             for (int a = 1; a <= hueLightCount; a++)
             {
@@ -84,11 +97,100 @@ namespace Aura_android
 
             //listView Onclick
             disp_Hues.ItemClick += dispHues_Listview_ItemClick;
+            //disp_Hues.ItemClick += OnSelection;
+        }
+
+        void selectAllLightsON()
+        {
+            //this toggles all the lights states to ON and saves that state
+            for(int a=0; a<hueLightCount; a++)
+            {
+                HueToggleLights[a] = "ON";
+                //string PUT_LightsON = "http://" + IP_ADDR + "/api/" + Hue_User + "/lights/" + (a + 1) + "/state";
+                string PUT_LIGHTS = GET_LIGHTS + "/" + (a + 1) + "/state";
+                controlLights(PUT_LIGHTS, "PUT", "{\"on\":true}");
+                Console.Write("Light "); Console.Write(a+1); Console.WriteLine(" is ON");
+            }
+        }
+
+        void controlLights(string URL, string METHOD, string BODY)
+        {
+            WebClient client = new WebClient();
+            client.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+            client.Headers.Add(HttpRequestHeader.Accept, "application/json, text/javascript, */*; q=0.01");
+         
+            //PUT request
+            byte[] dataBytes = Encoding.UTF8.GetBytes(BODY);
+            client.UploadDataAsync(new Uri(URL), METHOD, dataBytes);
+        }
+        //This requires Xamarin.Forms which is conflicting with Android widget button. Have to do a work around
+        /*void OnSelection(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+            {
+                return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
+            }
+            Console.WriteLine("Item Selected", e.SelectedItem.ToString(), "Ok");
+            //((ListView)sender).SelectedItem = null; //uncomment line if you want to disable the visual selection state.
+        }*/
+
+        private void DisplayAlert(string v1, string v2, string v3)
+        {
+            //Use alers for now
+
         }
 
         private void dispHues_Listview_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            //get id's of the respective lights??  
+            //get id's of the respective lights??  // can use the last index of the lamps for id
+            //e.position will give the number
+            //Do a PUT request to flash the lights //http://<bridge ip address>/api/1028d66426293e821ecfd9ef1a0731df/lights/1/state
+            string PUT_LIGHTS = GET_LIGHTS + "/" + (e.Position + 1) + "/state";
+
+            //**Using toggle to change the lights - By default all lights will be selected and will be on
+            if (HueToggleLights[e.Position] == "ON")
+            {
+                //turn off the lights
+                controlLights(PUT_LIGHTS, "PUT", "{\"on\":false}");
+
+                HueToggleLights[e.Position] = "OFF";
+            }
+            else if(HueToggleLights[e.Position] == "OFF")
+            {
+                //turn on the lights
+                controlLights(PUT_LIGHTS, "PUT", "{\"on\":true}");
+
+                HueToggleLights[e.Position] = "ON";
+            }
+            Console.Write("Lights "); Console.Write(e.Position); Console.Write(" toggled "); Console.WriteLine(HueToggleLights[e.Position]);
+
+            //**Lights
+           /* string PUT_FLASH_LIGHTS_URL = "http://" + IP_ADDR + "/api/" + Hue_User + "/lights/" + (e.Position+1) + "/state";
+            Console.WriteLine(PUT_FLASH_LIGHTS_URL);
+
+            string PUT_FLASH_LIGHTS_BODY_ON = "{\"on\":true}";
+            string PUT_FLASH_LIGHTS_BODY_OFF = "{\"on\":false}";
+            WebClient client1 = new WebClient();
+            WebClient client2 = new WebClient();*/
+
+            /*Turning ON*/
+            //Headers
+            //client1.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+            //client1.Headers.Add(HttpRequestHeader.Accept, "application/json, text/javascript, */*; q=0.01");
+
+            //POST request
+            //byte[] dataBytes1 = Encoding.UTF8.GetBytes(PUT_FLASH_LIGHTS_BODY_ON);
+            //client1.UploadDataAsync(new Uri(PUT_FLASH_LIGHTS_URL), "PUT", dataBytes1);
+
+            /*Turning OFF*/
+            //Headers
+            //client2.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+            //client2.Headers.Add(HttpRequestHeader.Accept, "application/json, text/javascript, */*; q=0.01");
+
+            //POST request
+            //byte[] dataBytes2 = Encoding.UTF8.GetBytes(PUT_FLASH_LIGHTS_BODY_OFF);
+            //client2.UploadDataAsync(new Uri(PUT_FLASH_LIGHTS_URL), "PUT", dataBytes2);
+            //client.UploadDataCompleted += Hue_Create_User;  //Can do a success alert
         }
     }
 }

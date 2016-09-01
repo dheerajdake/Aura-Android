@@ -17,12 +17,16 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Fo
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Platform.dll
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Xaml.dll
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\FormsViewGroup.pdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\FormsViewGroup.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Core.pdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Core.xml
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Core.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Xaml.pdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_android.dll
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_android.pdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\bin\Aura_android.Aura_android.apk
@@ -46,10 +50,6 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\raw\wi
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\R.cs.flag
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\uploadflags.txt
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Aura_android.dll.mdb
-C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\FormsViewGroup.dll.mdb
-C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Core.dll.mdb
-C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
-C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_android.csprojResolveAssemblyReference.cache
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Java.Interop.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Microsoft.CSharp.dll.mdb

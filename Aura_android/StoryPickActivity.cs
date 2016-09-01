@@ -59,30 +59,24 @@ namespace Aura_android
             if(genre[e.Position] == genre[0])
             {
                 var narrate_intent = new Intent(this, typeof(NarrateActivity));
+
+                //pass the HueToggleLights from previous through next through this activity
+                IList<string>HueLightState = Intent.GetStringArrayListExtra("Selected lamps");
+                int hueLightCount = Intent.GetIntExtra("HueLightCount", 0);
+                string IP_ADDR = Intent.GetStringExtra("IP_ADDR");
+                string Hue_User = Intent.GetStringExtra("HUE_USER");
+
+                //pass these to the next activity
+                narrate_intent.PutStringArrayListExtra("Selected lamps", HueLightState);
+                narrate_intent.PutExtra("HueLightCount", hueLightCount);
+                narrate_intent.PutExtra("IP_ADDR", IP_ADDR);
+                narrate_intent.PutExtra("HUE_USER", Hue_User);
+
                 StartActivity(narrate_intent);
             }
             else if(genre[e.Position] == genre[1])
             {
-                //Setup REST API test
-                //calling the broker service for hue discovery
-                //this works but its too much work on the same thread. The UI becomes unresponsive if it takes time. 
-                
-                string url = "https://www.meethue.com/api/nupnp";
-                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
-                request.ContentType = "application/json";
-                request.Method = "GET";
-                HttpWebResponse resp = (HttpWebResponse)request.GetResponse();
-                string responseText;
-
-                using (var response = request.GetResponse())
-                {
-                    using (var reader = new StreamReader(response.GetResponseStream()))
-                    {
-                        responseText = reader.ReadToEnd();
-                        Console.Write("Data is ");
-                        Console.WriteLine(responseText);
-                    }
-                }
+                 //
             }
         }
     }

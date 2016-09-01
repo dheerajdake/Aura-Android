@@ -67,6 +67,19 @@ namespace Aura_android
                 }
                 Console.Write("The hub count is "); Console.WriteLine(countHueHub);
 
+                /*No hues alert*/
+                if(countHueHub == 0)
+                {
+                    //alert
+                    var alertBegin = new AlertDialog.Builder(scan_hue.Context);
+                    alertBegin.SetTitle("No hues found. Try again.");
+                    alertBegin.SetPositiveButton("OK", (sender1, f) =>
+                    {
+                        return;
+                    });
+                    alertBegin.Show();
+                }
+
                 /*Take an int array to store the indices of { and }*/
                 int []JSON_storeIndices = new int[countHueHub*2];
                 int index = 0;

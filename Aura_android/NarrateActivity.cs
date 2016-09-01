@@ -11,6 +11,8 @@ using Android.Views;
 using Android.Widget;
 using Android.Speech;
 using Android.Media;
+using System.Net;
+using System.Threading;
 
 namespace Aura_android
 {
@@ -25,8 +27,29 @@ namespace Aura_android
         private string[] lines;
         private int line_count = 0;
         private int currentLine = 0;
+        private int hueLightCount = 0;
+        private IList<string> HueLightState;
+        private string IP_ADDR;
+        private string Hue_User;
+        private string LIGHT_URL;
 
-        MediaPlayer _player;
+        //Define situations
+        private string THUNDER_HIGH = "{\"on\":true, \"sat\":254, \"bri\":254, \"hue\":34069}";
+        private string THUNDER_LOW  = "{\"on\":true, \"sat\":254, \"bri\":76, \"hue\":34069}";
+        private string RAIN_HIGH    = "{\"on\":true, \"sat\":254, \"bri\":144, \"hue\":47125}";
+        private string RAIN_LOW     = "{\"on\":true, \"sat\":252, \"bri\":60, \"hue\":42608}";
+        private string WIND_HIGH    = "{\"on\":true, \"sat\":252, \"bri\":60, \"hue\":65527}";
+        private string WIND_MED     = "{\"on\":true, \"sat\":252, \"bri\":60, \"hue\":7321}";
+        private string WIND_LOW     = "{\"on\":true, \"sat\":252, \"bri\":60, \"hue\":14832}";
+        private string DARKNESS     = "{\"on\":true, \"sat\":141, \"bri\":10, \"hue\":14989}";
+        private string FLAME_HIGH   = "{\"on\":true, \"sat\":228, \"bri\":144, \"hue\":168}";
+        private string FLAME_LOW    = "{\"on\":true, \"sat\":252, \"bri\":240, \"hue\":7452}";
+        private string BIRD_HIGH    = "{\"on\":true, \"sat\":230, \"bri\":144, \"hue\":52637}";
+        private string BIRD_LOW     = "{\"on\":true, \"sat\":230, \"bri\":64, \"hue\":52637}";
+        private string SUN          = "{\"on\":true, \"sat\":141, \"bri\":254, \"hue\":14988}";
+        private string SLEEP        = "{\"on\":true, \"sat\":254, \"bri\":10, \"hue\":10806}";
+
+    MediaPlayer _player;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -45,6 +68,17 @@ namespace Aura_android
             prevButton = FindViewById<Button>(Resource.Id.Narrate_previous);
             nextButton = FindViewById<Button>(Resource.Id.Narrate_next);
 
+            //Get info from intents
+            hueLightCount = Intent.GetIntExtra("HueLightCount", 0);
+            HueLightState = new string[hueLightCount];
+            HueLightState = Intent.GetStringArrayListExtra("Selected lamps");
+            
+            IP_ADDR = Intent.GetStringExtra("IP_ADDR");
+            Hue_User = Intent.GetStringExtra("HUE_USER");
+
+            /*Base Light URL*/          //http://<bridge ip address>/api/1028d66426293e821ecfd9ef1a0731df/lights/1/state
+            LIGHT_URL = "http://" + IP_ADDR + "/api/" + Hue_User + "/lights/";    //equivalent sprintf() could be better
+         
             /*Demo story*/
             string tellTale = "It was a dark and stormy night. The rain fell in torrents. Except when it was checked by violent gust of wind."
                              + "And the scanty flame of the lamps, struggled against the darkness. But the next morning the sun came out."
@@ -197,7 +231,7 @@ namespace Aura_android
 
             foreach (string s in words)
             {
-                playsounds(s);
+                playMedia(s);
             }
         }
 
@@ -216,43 +250,162 @@ namespace Aura_android
             Console.Write("The number of lines are "); Console.WriteLine(line_count);
         }
 
+        /*Light Effects -- Does once for all the lights*/
+        void playLights(string URL, string METHOD, string BODY)
+        {
+            for(int a=0; a<hueLightCount; a++)
+            {
+                WebClient client = new WebClient();
+                client.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+                client.Headers.Add(HttpRequestHeader.Accept, "application/json, text/javascript, */*; q=0.01");
+
+                //Generate custom URL's   //1/state
+                string custom_URL = null;
+                if (HueLightState[a] == "ON")
+                {
+                    custom_URL = URL + (a + 1) + "/" + "state";
+                    Console.WriteLine(custom_URL);
+                    //PUT request
+                    byte[] dataBytes = System.Text.Encoding.UTF8.GetBytes(BODY);  //conflicting with android media encoding
+                    client.UploadDataAsync(new Uri(custom_URL), METHOD, dataBytes);
+                }
+            } 
+        }
+
+        /*Thread functions*/
+        public void doWork1()
+        {
+            for (int a = 0; a < 4; a++)
+            {
+                 playLights(LIGHT_URL, "PUT", BIRD_HIGH);
+                 playLights(LIGHT_URL, "PUT", BIRD_LOW);
+            }
+        }
+
+        public void doWork2()
+        {
+            playLights(LIGHT_URL, "PUT", DARKNESS);
+        }
+
+        public void doWork3()
+        {
+            for (int a = 0; a < 4; a++)
+            {
+                playLights(LIGHT_URL, "PUT", THUNDER_HIGH);
+                playLights(LIGHT_URL, "PUT", THUNDER_LOW);
+            }
+        }
+
+        public void doWork4()
+        {
+            for (int a = 0; a < 4; a++)
+            {
+                playLights(LIGHT_URL, "PUT", RAIN_HIGH);
+                playLights(LIGHT_URL, "PUT", RAIN_LOW);
+            }
+        }
+
+        public void doWork5()
+        {
+            for (int a = 0; a < 5; a++)
+            {
+                playLights(LIGHT_URL, "PUT", WIND_HIGH);
+                playLights(LIGHT_URL, "PUT", WIND_MED);
+                playLights(LIGHT_URL, "PUT", WIND_LOW);
+            }
+        }
+
+        public void doWork6()
+        {
+            for (int a = 0; a < 4; a++)
+            {
+                playLights(LIGHT_URL, "PUT", FLAME_HIGH);
+                playLights(LIGHT_URL, "PUT", FLAME_LOW);
+            }
+        }
+
+        public void doWork7()
+        {
+            playLights(LIGHT_URL, "PUT", SUN);
+        }
+
+        public void doWork8()
+        {
+            playLights(LIGHT_URL, "PUT", SLEEP);
+        }
+
         /*Play sounds*/
-        void playsounds(String boldwords)
+        //Lights should be on seperate threads
+        void playMedia(String boldwords)
         {
             if (boldwords == "bright")
             {
                 _player = MediaPlayer.Create(this, Resource.Raw.bird_cut);
                 _player.Start();
+
+                ThreadStart myThreadDelegate = new ThreadStart(doWork1);
+                Thread myThread = new Thread(myThreadDelegate);
+                myThread.Start();
             }
             else if (boldwords == "darkness")
             {
                 _player = MediaPlayer.Create(this, Resource.Raw.flute_cut);
                 _player.Start();
+
+                ThreadStart myThreadDelegate = new ThreadStart(doWork2);
+                Thread myThread = new Thread(myThreadDelegate);
+                myThread.Start();
             }
             else if (boldwords == "stormy")
             {
                 _player = MediaPlayer.Create(this, Resource.Raw.thunder_cut);
                 _player.Start();
+
+                ThreadStart myThreadDelegate = new ThreadStart(doWork3);
+                Thread myThread = new Thread(myThreadDelegate);
+                myThread.Start();
             }
             else if (boldwords == "rain")
             {
                 _player = MediaPlayer.Create(this, Resource.Raw.rain_cut);
                 _player.Start();
+
+                ThreadStart myThreadDelegate = new ThreadStart(doWork4);
+                Thread myThread = new Thread(myThreadDelegate);
+                myThread.Start();
             }
             else if (boldwords == "wind")
             {
                 _player = MediaPlayer.Create(this, Resource.Raw.wind_cut);
                 _player.Start();
+
+                ThreadStart myThreadDelegate = new ThreadStart(doWork5);
+                Thread myThread = new Thread(myThreadDelegate);
+                myThread.Start();
             }
             else if (boldwords == "flame")
             {
                 _player = MediaPlayer.Create(this, Resource.Raw.flame_cut);
                 _player.Start();
+
+                ThreadStart myThreadDelegate = new ThreadStart(doWork6);
+                Thread myThread = new Thread(myThreadDelegate);
+                myThread.Start();
             }
             else if (boldwords == "sun")
             {
                 _player = MediaPlayer.Create(this, Resource.Raw.rooster_cut);
                 _player.Start();
+
+                ThreadStart myThreadDelegate = new ThreadStart(doWork7);
+                Thread myThread = new Thread(myThreadDelegate);
+                myThread.Start();
+            }
+            else if(boldwords == "happily")
+            {
+                ThreadStart myThreadDelegate = new ThreadStart(doWork8);
+                Thread myThread = new Thread(myThreadDelegate);
+                myThread.Start();
             }
         }
 
