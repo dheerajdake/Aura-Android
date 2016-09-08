@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:weightSum="3">
+    android:weightSum="3"
+    android:background="@drawable/rain_color">
     <TextView
         android:gravity="center"
         android:text="Welcome to Aura.\nEnjoy a unique story telling experience.\nClick next to get started"
