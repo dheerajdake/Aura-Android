@@ -20,6 +20,7 @@ namespace Aura_android
         public string []HueToggleLights;    //size is equal to huelightcount
         private int hueLightCount = 0;
         string Hue_User, IP_ADDR, GET_LIGHTS;
+        private ToggleButton disp_Hue_switchs;// add toggle button
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,6 +30,8 @@ namespace Aura_android
             SetContentView(Resource.Layout.HueLamps);
 
             disp_Hues = FindViewById<ListView>(Resource.Id.disp_HueLights);
+            // add toggle button
+            disp_Hue_switchs = FindViewById<ToggleButton>(Resouce.Id.disp_HueLights);
             btn_HueLamps = FindViewById<Button>(Resource.Id.btn_hueLamps);
 
             //get Hue_user
@@ -49,6 +52,19 @@ namespace Aura_android
             HueToggleLights = new string[findLights(response)];      //finds the lights
             displayLightsOnUI();   //displays them as a list on the UI
             selectAllLightsON();   //sets the state of lights to ON
+
+            // set toggle button on and off
+            disp_Hue_switchs.Click += (o, e) =>
+            {
+                if (disp_Hue_switchs.Checked)
+                    // Perform action on clicks
+                    if (togglebutton.Checked)
+                        Toast.MakeText(this, "Checked", ToastLength.Short).Show();
+                    else
+                        Toast.MakeText(this, "Not checked", ToastLength.Short).Show();
+
+            };// end of toggle
+
 
             //button click
             btn_HueLamps.Click += (sender, e) =>
