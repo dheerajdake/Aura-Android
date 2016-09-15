@@ -82,5 +82,9 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\as
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\drawable\rain_color.jpg
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\drawable\rainbow_closeup.jpg
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\drawable\beautiful_color_lines.jpg
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\res\drawable\colorful_lines.jpg
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Debug\Aura_android.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Debug\Aura_android.dll.mdb

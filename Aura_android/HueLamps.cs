@@ -31,7 +31,7 @@ namespace Aura_android
 
             disp_Hues = FindViewById<ListView>(Resource.Id.disp_HueLights);
             // add toggle button
-            disp_Hue_switchs = FindViewById<ToggleButton>(Resouce.Id.disp_HueLights);
+            disp_Hue_switchs = FindViewById<ToggleButton>(Resource.Id.disp_HueLights);
             btn_HueLamps = FindViewById<Button>(Resource.Id.btn_hueLamps);
 
             //get Hue_user
@@ -58,7 +58,7 @@ namespace Aura_android
             {
                 if (disp_Hue_switchs.Checked)
                     // Perform action on clicks
-                    if (togglebutton.Checked)
+                    //if (togglebutton.Checked)
                         Toast.MakeText(this, "Checked", ToastLength.Short).Show();
                     else
                         Toast.MakeText(this, "Not checked", ToastLength.Short).Show();

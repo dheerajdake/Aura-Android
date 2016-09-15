@@ -18,8 +18,8 @@
             android:text="Start Recording"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnRecord" 
-            android:textSize="20" />
+            android:id="@+id/btnRecord"
+            android:textSize="20px" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"

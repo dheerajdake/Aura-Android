@@ -1,3 +1,4 @@
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\Aura_android.csprojResolveAssemblyReference.cache
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.dll
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.pdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.Aura_android.apk
@@ -27,7 +28,6 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Xamarin.
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Xamarin.Forms.Xaml.pdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Xamarin.Forms.Xaml.xml
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Xamarin.Forms.Xaml.dll.mdb
-C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\Aura_android.csprojResolveAssemblyReference.cache
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\Aura_android.dll
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\Aura_android.pdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\android\bin\Aura_android.Aura_android.apk
@@ -48,9 +48,13 @@ C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\rooster_cut.mp3
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\thunder_cut.mp3
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\raw\wind_cut.mp3
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\drawable\rain_color.jpg
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\drawable\rainbow_closeup.jpg
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\R.cs.flag
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\uploadflags.txt
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Aura_android.dll.mdb
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\drawable\beautiful_color_lines.jpg
+C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\obj\Release\res\drawable\colorful_lines.jpg
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Java.Interop.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Microsoft.CSharp.dll.mdb
 C:\Users\Dheeraj\Documents\GitHub\Aura_android\Aura_android\bin\Release\Mono.Android.dll.mdb
